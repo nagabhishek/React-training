@@ -4,6 +4,10 @@ import ListOfCourses from './listofcourses.component';
 import NewCourse from './newcourse.component';
 import Posts from './posts.component';
 import PostDetails from './postdetails.component';
+import Courses from './courses.component';
+import NewCourseWithReactHookForms from './newcourseshookfrom.component';
+import GrandParent from './contextapi.component';
+
 import './style.css';
 
 export default function App() {
@@ -43,16 +47,28 @@ export default function App() {
                     Posts
                   </Link>
                 </li>
+                <li className="nav-item">
+                  <Link className="nav-link" to="/contextapi">
+                    Context API
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
         </nav>
 
         <Routes>
-          <Route path="/" element={<ListOfCourses />}></Route>
-          <Route path="/newcourse" element={<NewCourse />}></Route>
+          <Route path="/" element={<Courses />}>
+            <Route index element={<ListOfCourses />}></Route>
+            <Route
+              path="newcourse"
+              element={<NewCourseWithReactHookForms />}
+            ></Route>
+          </Route>
           <Route path="/posts" element={<Posts />}></Route>
           <Route path="/postdetails/:id" element={<PostDetails />}></Route>
+          <Route path="/contextapi" element={<GrandParent />}></Route>
+
           <Route
             path="*"
             element={

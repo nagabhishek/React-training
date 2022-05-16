@@ -1,16 +1,9 @@
 import React, { useState } from 'react';
+import Ratings from './ratings.component';
+
 function Course(props) {
   let [likes, setLikes] = useState(props.coursedetails.likes);
   let [dislikes, setDisLikes] = useState(0);
-
-  var ratings = [];
-  for (let index = 0; index < props.coursedetails.rating; index++) {
-    ratings.push(
-      <span style={{ color: 'orange' }} key={index}>
-        <i className="fa-solid fa-star"></i>
-      </span>
-    );
-  }
 
   return (
     <div className="col-md-3 my-1">
@@ -22,7 +15,7 @@ function Course(props) {
           className="card-img-top"
         />
         <div className="card-body">
-          <p>{ratings}</p>
+          <Ratings rating={props.coursedetails.rating} />
 
           <h4 className="card-title">{props.coursedetails.title}</h4>
           <h5 className="card-text">₹. {props.coursedetails.price}</h5>
